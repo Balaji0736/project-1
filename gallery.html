@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101322">
+  <title>Gallery</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #101322; color: #f7f7fb; }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; padding: 7rem 1.25rem 3rem; background: radial-gradient(ellipse at 18% 20%, rgb(113 82 255 / 20%), transparent 38%), radial-gradient(ellipse at 82% 78%, rgb(42 211 195 / 14%), transparent 36%), #101322; }
+    .scene { position: fixed; inset: 0; pointer-events: none; background-image: linear-gradient(rgb(255 255 255 / 3%) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 3%) 1px, transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(to bottom, black, transparent 90%); }
+    .nav { position: fixed; z-index: 1; top: 1.5rem; right: 1.5rem; display: flex; gap: .4rem; padding: .4rem; border: 1px solid rgb(255 255 255 / 12%); border-radius: 999px; background: rgb(16 19 34 / 72%); backdrop-filter: blur(12px); }
+    .nav a { padding: .65rem .9rem; border-radius: 999px; color: #c5c8d9; font-size: .86rem; text-decoration: none; transition: background 180ms ease, color 180ms ease; }
+    .nav a:hover, .nav a[aria-current="page"] { background: rgb(255 255 255 / 10%); color: #fff; }
+    main { position: relative; width: min(100%, 1100px); margin: 0 auto; padding: clamp(1.5rem, 5vw, 3.5rem); border: 1px solid rgb(255 255 255 / 12%); border-radius: 32px; background: linear-gradient(145deg, rgb(255 255 255 / 9%), rgb(255 255 255 / 3%)); box-shadow: 0 30px 100px rgb(0 0 0 / 35%), inset 0 1px rgb(255 255 255 / 10%); backdrop-filter: blur(18px); animation: rise-in 800ms cubic-bezier(.2,.8,.2,1) both; }
+    .eyebrow { margin: 0 0 .8rem; color: #a8abc1; font-size: .76rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; letter-spacing: -.07em; background: linear-gradient(100deg, #fff 15%, #c9bdff 58%, #92f5e4); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .intro { max-width: 600px; margin: 1.2rem 0 2rem; color: #c2c4d4; font-size: 1.08rem; line-height: 1.7; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    figure { position: relative; min-height: 230px; margin: 0; overflow: hidden; display: flex; align-items: end; border: 1px solid rgb(255 255 255 / 12%); border-radius: 20px; isolation: isolate; background: var(--art); }
+    figure::before, figure::after { position: absolute; z-index: -1; content: ""; }
+    figure::before { width: 70%; aspect-ratio: 1; top: -24%; right: -10%; border-radius: 50%; background: rgb(255 255 255 / 19%); filter: blur(1px); }
+    figure::after { inset: 30% 0 0; background: linear-gradient(transparent, rgb(10 12 25 / 86%)); }
+    figcaption { padding: 1.2rem; color: #fff; font-weight: 650; letter-spacing: -.01em; }
+    .one { --art: radial-gradient(ellipse at 30% 35%, #ffc989 0 8%, transparent 9%), linear-gradient(145deg, #ee8b83, #794f9f 55%, #202948); }
+    .two { --art: radial-gradient(ellipse at 70% 30%, #d9fff1 0 7%, transparent 8%), linear-gradient(145deg, #4bc6b7, #327e91 55%, #263353); }
+    .three { --art: radial-gradient(ellipse at 35% 25%, #fff0a8 0 8%, transparent 9%), linear-gradient(145deg, #efb873, #da756e 55%, #493b68); }
+    .four { --art: radial-gradient(ellipse at 65% 38%, #f3d4ff 0 10%, transparent 11%), linear-gradient(145deg, #8e85d8, #675d9f 55%, #2a3555); }
+    .five { --art: radial-gradient(ellipse at 40% 38%, #c8ffe8 0 9%, transparent 10%), linear-gradient(145deg, #72b98d, #438c93 55%, #243957); }
+    .six { --art: radial-gradient(ellipse at 70% 28%, #ffe0a8 0 8%, transparent 9%), linear-gradient(145deg, #f39a6e, #bd657e 55%, #44375e); }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 760px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } figure { min-height: 200px; } }
+    @media (max-width: 520px) { body { padding-top: 6rem; } .nav { top: 1rem; right: 50%; transform: translateX(50%); } .grid { grid-template-columns: 1fr; } figure { min-height: 230px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About</a>
+    <a href="contact-us.html">Contact</a>
+    <a href="gallery.html" aria-current="page">Gallery</a>
+  </nav>
+  <main>
+    <p class="eyebrow">A collection of moments</p>
+    <h1>Our Gallery</h1>
+    <p class="intro">A few colorful snapshots from the ideas, places, and little details that inspire us.</p>
+    <section class="grid" aria-label="Gallery collection">
+      <figure class="one"><figcaption>Golden hour</figcaption></figure>
+      <figure class="two"><figcaption>Quiet horizons</figcaption></figure>
+      <figure class="three"><figcaption>Warm afternoons</figcaption></figure>
+      <figure class="four"><figcaption>Soft reflections</figcaption></figure>
+      <figure class="five"><figcaption>Growing things</figcaption></figure>
+      <figure class="six"><figcaption>New perspectives</figcaption></figure>
+    </section>
+  </main>
+</body>
+</html>
