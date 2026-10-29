@@ -27,6 +27,31 @@
         #101322;
     }
 
+    .nav {
+      position: fixed;
+      z-index: 1;
+      top: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: .4rem;
+      padding: .4rem;
+      border: 1px solid rgb(255 255 255 / 12%);
+      border-radius: 999px;
+      background: rgb(16 19 34 / 72%);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav a {
+      padding: .65rem .9rem;
+      border-radius: 999px;
+      color: #c5c8d9;
+      font-size: .86rem;
+      text-decoration: none;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .nav a:hover, .nav a[aria-current="page"] { background: rgb(255 255 255 / 10%); color: #fff; }
+
     .scene {
       position: fixed;
       inset: 0;
@@ -122,10 +147,17 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; }
     }
+
+    @media (max-width: 520px) { .nav { top: 1rem; right: 50%; transform: translateX(50%); } }
   </style>
 </head>
 <body>
   <div class="scene" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="hello-world.html" aria-current="page">Home</a>
+    <a href="about-us.html">About</a>
+    <a href="contact-us.html">Contact</a>
+  </nav>
   <main>
     <div class="sparkle" aria-hidden="true">✦</div>
     <p class="eyebrow">A little something to start</p>
